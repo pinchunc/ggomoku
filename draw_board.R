@@ -1,11 +1,24 @@
 library(ggplot2)
-df <- data.frame(x = c(0:15), y = c(0:1))
+library(grid)
 
-ggplot(df) +
-  geom_rect(xmin = -Inf, xmax = Inf,   ymin = -Inf, ymax = Inf, size = 2,   fill = "#D2B48C", color="black", alpha = 0.3)
+new_tile_x <- 3
+new_tile_y <- 6
 
-+
-  geom_rect(xmin = 0,    xmax = Inf, ymin = -Inf, ymax = 0,   fill = "#F5F5DC") +
-  geom_rect(xmin = 0,    xmax = Inf, ymin = 0,    ymax = Inf, fill = "green") +
-  geom_rect(xmin = -Inf, xmax = 0,   ymin = 0,    ymax = Inf, fill = "yellow") +
-  geom_point(aes(x, y), size = 5)
+board_size <- 19
+tile_color <- c("white","black")
+i = 1
+
+df <- data.frame(x = 0:board_size, y = 0:board_size)
+
+back <- ggplot(df) +
+  geom_point(aes(x, y), size = 5, alpha = 0) + 
+  theme(
+    panel.grid.major = element_line(colour = "black"),
+    panel.grid.minor = element_line(size = 1, colour="black"),
+    panel.background = element_rect(fill = "#D2B48C"),
+    panel.ontop = FALSE) 
+
+#each iteration
+back +
+  geom_point(aes(new_tile_x, new_tile_y), size = 5, colour = tile_color[i]) #alternate color
+
