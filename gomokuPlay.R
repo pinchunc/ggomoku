@@ -25,16 +25,15 @@ gomokuPlay <- function(board) {
     tile_x <- as.numeric(readline(prompt = "Enter x coordinate of tile. "))
     tile_y <- as.numeric(readline(prompt = "Enter y coordinate of tile. "))
 
-    # Check that the piece is not already on the matrix
-    #try(is.na(matrix[tile_x, tile_y]), silent = FALSE)
+    # Checking if piece is already on the board, and prompts for retry if so
     if (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
+      # Sound effect here
       message("There is already a piece on this tile. Please select different coordinates.")
       next
     }
 
     # Adds piece to the matrix, which is set up to match the grid
     matrix[(board_size + 1) - tile_y, tile_x] <- color
-    print(matrix)
 
     # Adds piece to the plotted grid
     board <- board + annotate("point", x = tile_x, y = tile_y, size = 5, colour = color)
@@ -42,13 +41,15 @@ gomokuPlay <- function(board) {
     # plot the new board
     print(board)
 
-    # Check for victory based on the matrix (nobody can win before the 10th move)
-    while (i >= 9) {
-      gomokuVictory(matrix)
+    # Check for victory based on the matrix (nobody can win before the 9th move)
+    winner <- gomokuVictory(matrix)
+    if (!is.na(winner)) {
+        # Sound effect for winner
+        message("The winner is ", winner, "!")
+        break
     }
 
-
-    # Returns message stating whose turn it is to move.
+    # Returns message stating whose turn it is to move (assuming there is no winner)
     if (color == "white") {
       message("It is black's turn to move.")
       color <- "black"
