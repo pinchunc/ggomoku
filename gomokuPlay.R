@@ -6,6 +6,8 @@
 
 gomokuPlay <- function(board) {
 
+  require(ggplot2)
+
   # Initializing matrix for checking victory
   matrix <- matrix(nrow = nrow(board$data), ncol = nrow(board$data))
 
