@@ -1,26 +1,21 @@
 library(ggplot2)
 library(grid)
 
+# Function that creates a new game of Gomoku
 gomokuBoard <- function(board_size = 19) {
 
-  # loading package dependencies (if necessary)
   require(ggplot2)
+  require(grid)
 
-  # (Re)initializing the number of tiles each player has (60)
-  white_tiles <- 60
-  black_tiles <- 60
-  moves <- rep(c("black", "white"), 120)
-
-
-  tile_color <- c("white","black")
-  i = 1
+  # Assigning board size (if not 19)
   board_size <- board_size
 
   # Initializing data.frame for board
   df <- data.frame(x = 1:board_size, y = 1:board_size)
 
+  # Plotting the initial board
   # Drawing board
-  background <- ggplot(df) +
+  board <- ggplot(df) +
     geom_point(aes(x, y), size = 5, alpha = 0) +
     theme(
       aspect.ratio = 1,
@@ -31,19 +26,17 @@ gomokuBoard <- function(board_size = 19) {
       panel.ontop = FALSE
     ) +
     scale_x_continuous(
-      breaks = seq(1, board_size, by = 1),
-      minor_breaks = seq(1, board_size, 1)
+      breaks = seq(1, nrow(df), by = 1),
+      minor_breaks = seq(1, nrow(df), 1)
     ) +
     scale_y_continuous(
-      breaks = seq(1, board_size, by = 1),
-      minor_breaks = seq(1, board_size, 1)
+      breaks = seq(1, nrow(df), by = 1),
+      minor_breaks = seq(1, nrow(df), 1)
     )
 
-  message("Both players have 60 tiles. Now you may begin playing Gomoku. Black is the first to move.")
+  message("Both players have 60 tiles. Black is the first to move.")
 
-  # Calling the board object
-  background
+  # Plotting the board
+  return(board)
 
 }
-
-gomokuBoard(19)
