@@ -25,8 +25,10 @@ gomokuPlay <- function(board) {
     tile_y <- as.numeric(readline(prompt = "Enter y coordinate of tile. "))
 
     # Check that the piece is not already on the matrix
+    #try(is.na(matrix[tile_x, tile_y]), silent = FALSE)
     if (!is.na(matrix[tile_x, tile_y])) {
-      stop("There is already a piece on this tile. Please select different coordinates.")
+      message("There is already a piece on this tile. Please select different coordinates.")
+      next
     }
 
     # Adds piece to the plotted grid
@@ -58,3 +60,5 @@ gomokuPlay <- function(board) {
   }
 
 }
+
+### Need to add a key to stop the game by the users
