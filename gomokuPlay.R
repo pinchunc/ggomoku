@@ -9,7 +9,8 @@ gomokuPlay <- function(board) {
   require(ggplot2)
 
   # Initializing matrix for checking victory
-  matrix <- matrix(nrow = nrow(board$data), ncol = nrow(board$data))
+  board_size <- nrow(board$data)
+  matrix <- matrix(nrow = board_size, ncol = board_size)
 
   # Black goes first
   color <- "black"
@@ -26,10 +27,14 @@ gomokuPlay <- function(board) {
 
     # Check that the piece is not already on the matrix
     #try(is.na(matrix[tile_x, tile_y]), silent = FALSE)
-    if (!is.na(matrix[tile_x, tile_y])) {
+    if (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
       message("There is already a piece on this tile. Please select different coordinates.")
       next
     }
+
+    # Adds piece to the matrix, which is set up to match the grid
+    matrix[(board_size + 1) - tile_y, tile_x] <- color
+    print(matrix)
 
     # Adds piece to the plotted grid
     board <- board + annotate("point", x = tile_x, y = tile_y, size = 5, colour = color)
@@ -37,10 +42,11 @@ gomokuPlay <- function(board) {
     # plot the new board
     print(board)
 
-    # Adds piece to the matrix
-    matrix[tile_x, tile_y] <- color
+    # Check for victory based on the matrix (nobody can win before the 10th move)
+    while (i >= 9) {
+      gomokuVictory(matrix)
+    }
 
-    # Check for victory based on the matrix
 
     # Returns message stating whose turn it is to move.
     if (color == "white") {
@@ -54,7 +60,7 @@ gomokuPlay <- function(board) {
     }
 
     if (i == 120) {
-      message("Both players are out of moves.")
+      stop("Both players are out of moves.")
     }
 
   }
