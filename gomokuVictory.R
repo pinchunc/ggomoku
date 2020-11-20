@@ -10,14 +10,17 @@ matrix[2:8, 1] <- test # first column, second row
 gomokuVictory <- function(matrix) {
 
   # Pull out a column or a row from the matrix as a vector
-
+  winner <- NA
   # checking for winner on rows
   rows <- apply(matrix, MARGIN = 1, FUN = rle)
 
   for (i in 1:nrow(matrix)) {
     if (5 %in% rows[[i]]$lengths) {
       winner <- rows[[i]]$values[which(rows[[i]]$lengths == 5)]
-      stop("Winner is ", winner)
+      break
+    }
+    else {
+      next
     }
   }
 
@@ -27,11 +30,18 @@ gomokuVictory <- function(matrix) {
   for (j in 1:ncol(matrix)) {
     if (5 %in% cols[[j]]$lengths) {
       winner <- cols[[j]]$values[which(cols[[j]]$lengths == 5)]
-      stop("Winner is ", winner)
+      break
+    }
+    else {
+      next
     }
   }
+
+  # checking for winner on diagonals
+
+  return(winner)
 }
 
 # Play the game
-b <- gomokuBoard()
-gomokuPlay(b)
+
+gomokuPlay(gomokuBoard())
