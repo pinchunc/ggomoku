@@ -27,7 +27,7 @@ gomokuPlay <- function(board) {
 
     # Checking if piece is already on the board, and prompts for retry if so
     if (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
-      # Sound effect here
+      beep(sound = 7, expr = NULL)
       message("There is already a piece on this tile. Please select different coordinates.")
       next
     }
@@ -39,12 +39,15 @@ gomokuPlay <- function(board) {
     board <- board + annotate("point", x = tile_x, y = tile_y, size = 5, colour = color)
 
     # plot the new board
-    print(board)
-
+    board
+    # Sound effect for placing tile
+    beep(sound = 10, expr = NULL)
+    
     # Check for victory based on the matrix (nobody can win before the 9th move)
     winner <- gomokuVictory(matrix)
     if (!is.na(winner)) {
         # Sound effect for winner
+        beep(sound = 5, expr = NULL)
         message("The winner is ", winner, "!")
         break
     }
@@ -65,7 +68,6 @@ gomokuPlay <- function(board) {
     }
 
   }
-
 }
 
 ### Need to add a key to stop the game by the users
