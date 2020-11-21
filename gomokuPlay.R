@@ -71,3 +71,5 @@ gomokuPlay <- function(board) {
 }
 
 ### Need to add a key to stop the game by the users
+### Need to resolve the situation when X or Y inputs are missing 
+### Need to resolve the situation when X or Y inputs are out of the required range 
