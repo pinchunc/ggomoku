@@ -6,9 +6,11 @@ matrix <- matrix(nrow = 19, ncol = 19)
 test <- c("black", "white", "white", "white", "white", "white", "black")
 matrix[1, 2:8] <- test # first row, second column
 matrix[2:8, 1] <- test # first column, second row
+diag(matrix)[1:7] <- test
+revdiag(matrix)[1:7] <- test
 
 gomokuVictory <- function(matrix) {
-
+  require(lava)
   # Pull out a column or a row from the matrix as a vector
   winner <- NA
   # checking for winner on rows
@@ -38,7 +40,17 @@ gomokuVictory <- function(matrix) {
   }
 
   # checking for winner on diagonals
-
+  # center diagonals
+  diags <- rle(diag(matrix))
+  if (5 %in% diags$lengths) {
+    winner <- diags$values[which(diags$lengths == 5)]
+  }
+  # center reverse diagonals
+  revs <- rle(revdiag(matrix))
+  if (5 %in% revs$lengths) {
+    winner <- revs$values[which(revs$lengths == 5)]
+  }
+  
   return(winner)
 }
 

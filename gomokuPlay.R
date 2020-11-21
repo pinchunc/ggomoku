@@ -39,7 +39,7 @@ gomokuPlay <- function(board) {
     board <- board + annotate("point", x = tile_x, y = tile_y, size = 5, colour = color)
 
     # plot the new board
-    board
+    print(board)
     # Sound effect for placing tile
     beep(sound = 10, expr = NULL)
     
