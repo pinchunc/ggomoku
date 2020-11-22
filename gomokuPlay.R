@@ -36,7 +36,7 @@ gomokuPlay <- function(board) {
     matrix[(board_size + 1) - tile_y, tile_x] <- color
 
     # Adds piece to the plotted grid
-    board <- board + annotate("point", x = tile_x, y = tile_y, size = 5, colour = color)
+    board <- board + annotate("point", x = tile_x, y = tile_y, size = 6.5, colour = color)
 
     # plot the new board
     print(board)
@@ -47,7 +47,7 @@ gomokuPlay <- function(board) {
     winner <- gomokuVictory(matrix)
     if (!is.na(winner)) {
         # Sound effect for winner
-        beep(sound = 5, expr = NULL)
+        beep(sound = 3, expr = NULL)
         message("The winner is ", winner, "!")
         break
     }

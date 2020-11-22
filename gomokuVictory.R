@@ -43,7 +43,7 @@ gomokuVictory <- function(matrix) {
 
   # checking for winner on diagonals
   # diagonals
-  for (i in 1:(board_size-5)) {
+  for (i in 1:(board_size-4)) {
     diags <- rle(diag(matrix[i:board_size, 1:(board_size + 1 - i)]))
     print(matrix)
     #diags <- rle(diag(matrix))
