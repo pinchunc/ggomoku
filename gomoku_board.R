@@ -2,8 +2,7 @@ library(ggplot2)
 library(grid)
 
 # Function that creates a new game of Gomoku
-gomokuBoard <- function(board_size = 19) {
-
+gomoku_board <- function(board_size = 19) {
   require(ggplot2)
   require(grid)
 
@@ -38,5 +37,4 @@ gomokuBoard <- function(board_size = 19) {
 
   # Plotting the board
   return(board)
-
 }
