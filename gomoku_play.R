@@ -4,8 +4,7 @@
 # It plots those values onto the ggplot
 # It also adds these values onto a matrix which is used to evaluate victory
 
-gomokuPlay <- function(board) {
-
+gomoku_play <- function(board) {
   require(ggplot2)
 
   # Initializing matrix for checking victory
@@ -42,14 +41,14 @@ gomokuPlay <- function(board) {
     print(board)
     # Sound effect for placing tile
     beep(sound = 10, expr = NULL)
-    
+
     # Check for victory based on the matrix (nobody can win before the 9th move)
     winner <- gomokuVictory(matrix)
     if (!is.na(winner)) {
-        # Sound effect for winner
-        beep(sound = 3, expr = NULL)
-        message("The winner is ", winner, "!")
-        break
+      # Sound effect for winner
+      beep(sound = 3, expr = NULL)
+      message("The winner is ", winner, "!")
+      break
     }
 
     # Returns message stating whose turn it is to move (assuming there is no winner)
@@ -66,10 +65,9 @@ gomokuPlay <- function(board) {
     if (i == 120) {
       stop("Both players are out of moves.")
     }
-
   }
 }
 
 ### Need to add a key to stop the game by the users
-### Need to resolve the situation when X or Y inputs are missing 
-### Need to resolve the situation when X or Y inputs are out of the required range 
+### Need to resolve the situation when X or Y inputs are missing
+### Need to resolve the situation when X or Y inputs are out of the required range
