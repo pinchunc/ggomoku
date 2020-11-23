@@ -37,6 +37,22 @@ gomoku_play <- function(board) {
     # Adds piece to the plotted grid
     board <- board + annotate("point", x = tile_x, y = tile_y, size = 6.5, colour = color)
 
+    # Adding move number to each tile depending on color
+    # even numbered moves are white (2, 4, 6 ...)
+    if ((i %% 2) == 0) {
+      message("Adding text to the board for white tile.")
+      board <- board +
+        annotate("text", x = tile_x, y = tile_y,
+                 label = as.character(i / 2), color = "white", parse = TRUE)
+    }
+    # odd numbered moves are black (1, 3, 5, ...)
+    else {
+      message("Adding text to the board for black tile.")
+      board <- board +
+        annotate("text", x = tile_x, y = tile_y,
+                 label = as.character((i + 1) / 2), color = "black", parse = TRUE)
+    }
+
     # plot the new board
     print(board)
     # Sound effect for placing tile
