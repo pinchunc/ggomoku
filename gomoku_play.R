@@ -59,7 +59,7 @@ gomoku_play <- function(board) {
     beep(sound = 10, expr = NULL)
 
     # Check for victory based on the matrix (nobody can win before the 9th move)
-    winner <- gomokuVictory(matrix)
+    winner <- gomoku_victory(matrix)
     if (!is.na(winner)) {
       # Sound effect for winner
       beep(sound = 3, expr = NULL)
