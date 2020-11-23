@@ -4,7 +4,7 @@
 # It plots those values onto the ggplot
 # It also adds these values onto a matrix which is used to evaluate victory
 
-gomoku_play <- function(board) {
+gomoku_play <- function(board, show_moves = FALSE) {
   require(ggplot2)
   require(beepr)
   # Initializing matrix for checking victory
@@ -37,26 +37,29 @@ gomoku_play <- function(board) {
     # Adds piece to the plotted grid
     board <- board + annotate("point", x = tile_x, y = tile_y, size = 6.5, colour = color)
 
-    # Adding move number to each tile depending on color
-    # even numbered moves are white (2, 4, 6 ...)
-    if ((i %% 2) == 0) {
-      message("Adding text to the board for white tile.")
-      board <- board +
-        annotate("text", x = tile_x, y = tile_y,
-                 label = as.character(i / 2), color = "black", parse = TRUE)
-    }
-    # odd numbered moves are black (1, 3, 5, ...)
-    else {
-      message("Adding text to the board for black tile.")
-      board <- board +
-        annotate("text", x = tile_x, y = tile_y,
-                 label = as.character((i + 1) / 2), color = "white", parse = TRUE)
+    # Showing move numbers if user selects show_moves = TRUE
+    if (show_moves == TRUE) {
+      # Adding move number to each tile depending on color
+      # even numbered moves are white (2, 4, 6 ...)
+      if ((i %% 2) == 0) {
+        message("Adding text to the board for white tile.")
+        board <- board +
+          annotate("text", x = tile_x, y = tile_y,
+                   label = as.character(i / 2), color = "black", parse = TRUE)
+      }
+      # odd numbered moves are black (1, 3, 5, ...)
+      else {
+        message("Adding text to the board for black tile.")
+        board <- board +
+          annotate("text", x = tile_x, y = tile_y,
+                   label = as.character((i + 1) / 2), color = "white", parse = TRUE)
+      }
     }
 
     # plot the new board
     print(board)
     # Sound effect for placing tile
-    beep(sound = 10, expr = NULL)
+    # beep(sound = 10, expr = NULL)
 
     # Check for victory based on the matrix (nobody can win before the 9th move)
     winner <- gomoku_victory(matrix)
