@@ -67,4 +67,4 @@ gomoku_victory <- function(matrix) {
 
 # Play the game
 
-gomokuPlay(gomokuBoard())
+gomoku_play(gomoku_board())
