@@ -6,7 +6,7 @@
 
 gomoku_play <- function(board) {
   require(ggplot2)
-
+  require(beepr)
   # Initializing matrix for checking victory
   board_size <- nrow(board$data)
   matrix <- matrix(nrow = board_size, ncol = board_size)
@@ -43,14 +43,14 @@ gomoku_play <- function(board) {
       message("Adding text to the board for white tile.")
       board <- board +
         annotate("text", x = tile_x, y = tile_y,
-                 label = as.character(i / 2), color = "white", parse = TRUE)
+                 label = as.character(i / 2), color = "black", parse = TRUE)
     }
     # odd numbered moves are black (1, 3, 5, ...)
     else {
       message("Adding text to the board for black tile.")
       board <- board +
         annotate("text", x = tile_x, y = tile_y,
-                 label = as.character((i + 1) / 2), color = "black", parse = TRUE)
+                 label = as.character((i + 1) / 2), color = "white", parse = TRUE)
     }
 
     # plot the new board
