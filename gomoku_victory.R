@@ -46,7 +46,7 @@ gomoku_victory <- function(matrix) {
   d <- row(matrix) - col(matrix)
   diags_num <- split(matrix, d)
   diags_rle <- lapply(diags_num, FUN = rle)
-  for (i in 1:length(diags_rle)) {
+  for (i in 1:(length(diags_rle))) {
     if (5 %in% diags_rle[i]$lengths) {
       winner <- diags_rle[i]$values[which(diags_rle[i]$lengths == 5)]
       break
@@ -55,7 +55,6 @@ gomoku_victory <- function(matrix) {
       next
     }
   }
-  
 
   # center reverse diagonals
   revs <- rle(revdiag(matrix))
