@@ -14,7 +14,9 @@ gomoku_board <- function(board_size = 19) {
 
   # Plotting the initial board
   # Drawing board
-  board <- ggplot(df) +
+  board <- suppressMessages(
+    print(
+      ggplot(df) +
     geom_point(aes(x, y), size = 5, alpha = 0) +
     theme(
       aspect.ratio = 1,
@@ -31,8 +33,19 @@ gomoku_board <- function(board_size = 19) {
     scale_y_continuous(
       breaks = seq(1, nrow(df), by = 1),
       minor_breaks = seq(1, nrow(df), 1)
+    ) +
+    scale_x_continuous(
+      breaks = seq(1, nrow(df), by = 1),
+      minor_breaks = seq(1, nrow(df), 1),
+      sec.axis = dup_axis()
+    ) +
+    scale_y_continuous(
+      breaks = seq(1, nrow(df), by = 1),
+      minor_breaks = seq(1, nrow(df), 1),
+      sec.axis = dup_axis()
     )
-
+  )
+)
   message("Both players have 60 tiles. Black is the first to move.")
 
   # Plotting the board
