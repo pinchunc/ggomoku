@@ -1,17 +1,5 @@
-
-# test matrix
-matrix <- matrix(1:19^2, nrow = 19, ncol = 19)
-
-# Assigning a test vector to one row and one column of the matrix
-test <- c("black", "white", "white", "white", "white", "white", "black")
-matrix[1, 2:8] <- test # first row, second column
-matrix[2:8, 1] <- test # first column, second row
-diag(matrix)[1:7] <- test
-diag(matrix[2:8, ])[1:7] <- test
-revdiag(matrix)[1:7] <- test
-board_size <- nrow(board$data)
-
 gomoku_victory <- function(matrix) {
+  require(purrr)
   # Pull out a column or a row from the matrix as a vector
   winner <- NA
 
@@ -48,7 +36,7 @@ gomoku_victory <- function(matrix) {
   else {
     return(winner)
   }
-  
+
   # checking for winner on diagonals
   # split the matrix to get diagonals
   if (is.na(winner)) {
@@ -69,7 +57,7 @@ gomoku_victory <- function(matrix) {
   else {
     return(winner)
   }
-  
+
   # split the matrix to get reverse diagonals
   if (is.na(winner)) {
     r <- row(matrix) + col(matrix)
@@ -89,12 +77,4 @@ gomoku_victory <- function(matrix) {
   else {
     return(winner)
   }
-}
-
-# Play the game
-gomoku_winner <- function(rle_output) {
-  if (5 %in% rle_output$lengths) {
-    winner_list <- rle_output$values[which(rle_output$lengths == 5)]}
-  else {winner_list <- NA}
-  return(winner_list)
 }
