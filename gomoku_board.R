@@ -48,7 +48,8 @@ gomoku_board <- function(board_size = 19) {
       breaks = seq(1, nrow(df), by = 1),
       minor_breaks = seq(1, nrow(df), 1),
       sec.axis = dup_axis()
-    )
+    ) +
+    ggtitle("Black's Move", subtitle = "Move 1/60")
   )
 )
   message("Both players have 60 tiles. Black is the first to move.")
