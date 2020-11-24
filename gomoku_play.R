@@ -7,7 +7,6 @@
 gomoku_play <- function(board, show_moves = FALSE) {
   require(ggplot2)
   require(beepr) # for the beep() function
-  require(dendextend) # for the function is.natural.number()
 
   # Initializing matrix for checking victory
   board_size <- nrow(board$data)
@@ -27,7 +26,7 @@ gomoku_play <- function(board, show_moves = FALSE) {
       message("It is black's move number ", (i + 1) / 2, "/60.")
     }
     else if (color == "white") {
-      message("It is white's move number ", i/2, "/60.")
+      message("It is white's move number ", i / 2, "/60.")
     }
 
     # Printing the newest stage of the board.
@@ -35,31 +34,8 @@ gomoku_play <- function(board, show_moves = FALSE) {
 
     # Prompting user for coordinates to plot on the graph and also to add to the matrix
     # They should only enter whole numbers between 1 and the maximum board size
-    tile_x <- as.numeric(readline(prompt = "Enter x coordinate of tile. "))
-    tile_y <- as.numeric(readline(prompt = "Enter y coordinate of tile. "))
-
-
-    # Check that the user put in a natural number for both
-
-
-
-    if (is.natural.number(tile_x) | is.natural.number(tile_y)) {
-      # Then check that the move is within the confines of the board
-      if (tile_x > board_size | tile_y > board_size) {
-        message("That is not a valid input for this board size. Please select whole numbers between 1 and ", board_size, ".")
-        next
-      }
-      # Then that the move has not already taken place on the board
-      if (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
-        message("There is already a piece on this tile. Please select different coordinates.")
-        next
-      }
-    }
-    # If the number is not a natural number, let them try again
-    else {
-      message("This is not a valid input. Please select whole numbers between 1 and ", board_size, ".")
-      next
-    }
+    tile_x <- gomoku_input()
+    tile_y <- gomoku_input()
 
     # Adds piece to the matrix, which is set up to match the grid
     matrix[(board_size + 1) - tile_y, tile_x] <- color
@@ -118,9 +94,8 @@ gomoku_play <- function(board, show_moves = FALSE) {
     }
 
     # Incrementing the while loop
-    i <- i+1
+    i <- i + 1
   }
-
 }
 
 ### Need to add a key to stop the game by the users
