@@ -3,8 +3,16 @@ gomoku_board <- function(board_size = 19) {
   require(ggplot2)
   require(grid)
 
-  # Assigning board size (if not 19)
-  board_size <- board_size
+  if (board_size == 15) {
+    board_size <- 15
+  }
+  else if (board_size == 19) {
+    board_size <- 19
+  }
+  else {
+    stop("board_size argument must be set to 19 (default) or 15.")
+  }
+
 
   # Initializing data.frame for board
   df <- data.frame(x = 1:board_size, y = 1:board_size)
