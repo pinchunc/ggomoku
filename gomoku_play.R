@@ -16,6 +16,8 @@ gomoku_play <- function(board, show_moves = FALSE) {
   color <- "black"
   i <- 1
 
+  print(board)
+
   # The turns will alternate between each player so they each have 60 moves
   while (i <= 120) {
 
@@ -28,9 +30,6 @@ gomoku_play <- function(board, show_moves = FALSE) {
     else if (color == "white") {
       message("It is white's move number ", i / 2, "/60.")
     }
-
-    # Printing the newest stage of the board.
-    print(board)
 
     # Prompting user for coordinates to plot on the graph and also to add to the matrix
     # They should only enter whole numbers between 1 and the maximum board size
@@ -71,38 +70,43 @@ gomoku_play <- function(board, show_moves = FALSE) {
       }
     }
 
-    # plot the new board
-    print(board)
-    # Sound effect for placing tile
-    # beep(sound = 10, expr = NULL)
-
     # Check for victory based on the matrix (nobody can win before the 9th move)
     winner <- gomoku_victory(matrix)
     if (!is.na(winner)) {
       # Sound effect for winner
       beep(sound = 3, expr = NULL)
       message("The winner is ", winner, "!")
+      board <- board + ggtitle(paste0("Winner: ", capitalize(winner)))
       break
     }
 
     # Returns message stating whose turn it is to move (assuming there is no winner)
-    if (color == "white") {
-      message("It is black's turn to move.")
-      color <- "black"
-    }
-
-    else {
-      message("It is white's turn to move.")
+    if (color == "black") {
       color <- "white"
+      board <- board + ggtitle("White's Move",
+                               subtitle = paste0("Move ", i / 2, "/60"))
+    }
+    else {
+      color <- "black"
+      board <- board + ggtitle("Black's Move",
+                              subtitle = paste0("Move ", (i + 1) /2, "/60"))
     }
 
-    if (i == 120) {
-      stop("Both players are out of moves.")
-    }
+    # Adding title to indicate whose move it is:
+
+
+    # plot the new board
+    print(board)
 
     # Incrementing the while loop
     i <- i + 1
   }
+
+  # When players run out of moves
+  if (i == 120) {
+    message("Both players are out of moves.")
+  }
+
 }
 
 ### Need to add a key to stop the game by the users
