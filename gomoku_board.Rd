@@ -5,7 +5,7 @@
 Create a new gomoku_board
 }
 \description{
-`gomoku_board()` draws a 15x15 or 19x19 board for playing the board game _Gomoku_.
+`gomoku_board()` draws a 19x19 (default) or 15x15 board for playing the board game _Gomoku_.
 }
 \usage{
 `gomoku_board(board_size = 19)`
@@ -30,7 +30,8 @@ Create a new gomoku_board
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+J Steven Raquel
+Pin-Chun Chen
 }
 \note{
 %%  ~~further notes~~
@@ -42,8 +43,6 @@ Create a new gomoku_board
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-## The function is currently defined as
-
 # Both of these function generate a 19x19 Gomoku board
 gomoku_board()
 gomoku_board(19)
