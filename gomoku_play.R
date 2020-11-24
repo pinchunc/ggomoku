@@ -34,8 +34,15 @@ gomoku_play <- function(board, show_moves = FALSE) {
 
     # Prompting user for coordinates to plot on the graph and also to add to the matrix
     # They should only enter whole numbers between 1 and the maximum board size
-    tile_x <- gomoku_input()
-    tile_y <- gomoku_input()
+    tile_x <- gomoku_input(board_size)
+    tile_y <- gomoku_input(board_size)
+
+    # Then that the move has not already taken place on the board
+    if (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
+      message("There is already a piece on this tile. Please select different coordinates.")
+      tile_x <- gomoku_input(board_size)
+      tile_y <- gomoku_input(board_size)
+    }
 
     # Adds piece to the matrix, which is set up to match the grid
     matrix[(board_size + 1) - tile_y, tile_x] <- color
