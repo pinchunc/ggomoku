@@ -15,18 +15,19 @@ gomoku_play <- function(board, show_moves = FALSE) {
 
   # Black goes first
   color <- "black"
+  i <- 1
 
   # The turns will alternate between each player so they each have 60 moves
-  for (i in 1:120) {
+  while (i <= 120) {
 
     # Message to print the move number for diagnostics
-    message("This is move number ", i, " on the board.")
+    message("This is move number ", i, "/120 on the board.")
 
-    if ((i %% 2) == 0) {
-      message("It is white's move number ", i - 1, ".")
+    if (color == "black") {
+      message("It is black's move number ", (i + 1) / 2, "/60.")
     }
-    else {
-      message("It is black's move number ", (i + 1) / 2, ".")
+    else if (color == "white") {
+      message("It is white's move number ", i/2, "/60.")
     }
 
     # Printing the newest stage of the board.
@@ -39,28 +40,24 @@ gomoku_play <- function(board, show_moves = FALSE) {
 
 
     # Check that the user put in a natural number for both
+
+
+
     if (is.natural.number(tile_x) | is.natural.number(tile_y)) {
       # Then check that the move is within the confines of the board
       if (tile_x > board_size | tile_y > board_size) {
         message("That is not a valid input for this board size. Please select whole numbers between 1 and ", board_size, ".")
-        message("Trying to change value of i: ", i)
-        i <- i - 2
-        message("'New' value of i: ", i)
         next
       }
       # Then that the move has not already taken place on the board
       if (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
         message("There is already a piece on this tile. Please select different coordinates.")
-        message("Trying to change value of i: ", i)
-        i <- i - 2
-        message("'New' value of i: ", i)
         next
       }
     }
     # If the number is not a natural number, let them try again
     else {
       message("This is not a valid input. Please select whole numbers between 1 and ", board_size, ".")
-      i <- i - 2
       next
     }
 
@@ -119,7 +116,11 @@ gomoku_play <- function(board, show_moves = FALSE) {
     if (i == 120) {
       stop("Both players are out of moves.")
     }
+
+    # Incrementing the while loop
+    i <- i+1
   }
+
 }
 
 ### Need to add a key to stop the game by the users
