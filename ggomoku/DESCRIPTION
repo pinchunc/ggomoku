@@ -4,8 +4,7 @@ Title: Play Gomoku (Five in a Row) within R using ggplot2
 Version: 0.1.0
 Author: Pin-Chun Chen & J Steven Raquel
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: Draws a playing board for Gomoku using ggplot2, then allows two players to play until one of them wins. 
-Checks to see if either of them got exactly 5 tiles in a row across rows, columns, and diagonals.
+Description: Draws a playing board for Gomoku using ggplot2, then allows two players to play until one of them wins. Checks to see if either of them got exactly 5 tiles in a row across rows, columns, and diagonals.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
