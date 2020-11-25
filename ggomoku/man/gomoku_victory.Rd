@@ -2,7 +2,7 @@
 \alias{gomoku_victory}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Checking for a winner of the Gomoku game
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
