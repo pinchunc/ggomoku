@@ -1,6 +1,6 @@
-#' Title
+#' Checking valid user input for gomoku_play
 #'
-#' @param board_size a numeric variable indicating whether to restrict X and Y coordinates inputs for a 19x19 (default) or 15x15 board for playing the board game
+#' @param board_size a numeric variable of either 19 (default) or 15, indicating whether to restrict X and Y coordinates inputs for a 19x19 (default) or 15x15 board for playing the board game
 #'
 #' @return a vector of two integers indicating the location of the tile to be placed
 #' @export
