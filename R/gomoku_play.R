@@ -11,12 +11,11 @@
 #'
 #' @return nothing but iterate the game until the 120th move
 #' @export
-#'
+#' @import ggplot2
+#' @importFrom beepr beep
+#' @importFrom R.utils capitalize
 #' @examples gomoku_play(board, show_moves = TRUE)
 gomoku_play <- function(board, show_moves = FALSE) {
-  require(ggplot2)
-  require(beepr) # for the beep() function
-  require(R.utils) # for capitalize() function
 
   # Initializing matrix for checking victory
   board_size <- nrow(board$data)
@@ -85,7 +84,7 @@ gomoku_play <- function(board, show_moves = FALSE) {
     winner <- gomoku_victory(matrix)
     if (!is.na(winner)) {
       # Sound effect for winner
-      beep(sound = 3, expr = NULL)
+      beepr::beep(sound = 3, expr = NULL)
       message("The winner is ", winner, "!")
       board <- board + ggtitle(paste0("Winner: ", capitalize(winner)))
       break
