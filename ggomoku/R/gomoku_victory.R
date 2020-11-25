@@ -6,15 +6,17 @@ gomoku_victory <- function(matrix) {
 
   # checking for winner on rows
   if (is.na(winner)) {
-    rows <- apply(matrix, MARGIN = 1, FUN = rle)
-    for (i in 1:nrow(matrix)) {
-      if (5 %in% rows[[i]]$lengths) {
-        winner <- rows[[i]]$values[which(rows[[i]]$lengths == 5)]
-        break
-      }
-      else {
-        next
-      }
+    rows_num <- split(matrix, row(matrix))
+    rows_rle <- lapply(rows_num, FUN = rle)
+    winner_list <- map(rows_rle, gomoku_winner)
+    if ('white' %in% winner_list) {
+      winner <- "white"
+    }
+    else if ('black' %in% winner_list) {
+      winner <- "black"
+    }
+    else {
+      winner <- NA
     }
   }
   else {
@@ -23,15 +25,17 @@ gomoku_victory <- function(matrix) {
 
   # checking for winner on columns
   if (is.na(winner)) {
-    cols <- apply(matrix, MARGIN = 2, FUN = rle)
-    for (i in 1:nrow(matrix)) {
-      if (5 %in% rows[[i]]$lengths) {
-        winner <- rows[[i]]$values[which(rows[[i]]$lengths == 5)]
-        break
-      }
-      else {
-        next
-      }
+    cols_num <- split(matrix, col(matrix))
+    cols_rle <- lapply(cols_num, FUN = rle)
+    winner_list <- map(cols_rle, gomoku_winner)
+    if ('white' %in% winner_list) {
+      winner <- "white"
+    }
+    else if ('black' %in% winner_list) {
+      winner <- "black"
+    }
+    else {
+      winner <- NA
     }
   }
   else {
