@@ -4,6 +4,15 @@
 # It plots those values onto the ggplot
 # It also adds these values onto a matrix which is used to evaluate victory
 
+#' Title
+#'
+#' @param board 
+#' @param show_moves 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 gomoku_play <- function(board, show_moves = FALSE) {
   require(ggplot2)
   require(beepr) # for the beep() function

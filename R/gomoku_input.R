@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param board_size 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 gomoku_input <- function(board_size) {
 
 

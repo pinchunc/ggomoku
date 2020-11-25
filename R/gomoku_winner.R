@@ -1,4 +1,12 @@
 # Play the game
+#' Title
+#'
+#' @param rle_output 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 gomoku_winner <- function(rle_output) {
     if (5 %in% rle_output$lengths) {
         winner_list <- rle_output$values[which(rle_output$lengths == 5)]}

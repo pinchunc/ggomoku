@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param matrix 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 gomoku_victory <- function(matrix) {
   require(purrr) # for map() function
 

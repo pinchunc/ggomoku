@@ -1,4 +1,12 @@
 # Function that creates a new game of Gomoku
+#' Title
+#'
+#' @param board_size 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 gomoku_board <- function(board_size = 19) {
   require(ggplot2)
   require(grid)
