@@ -5,15 +5,15 @@
 Create a new gomoku_board
 }
 \description{
-`gomoku_board()` draws a 19x19 (default) or 15x15 board for playing the board game _Gomoku_.
+gomoku_board() draws a 19x19 (default) or 15x15 board for playing the board game Gomoku.
 }
 \usage{
-`gomoku_board(board_size = 19)`
+gomoku_board(board_size = 19)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{board_size}{
-    The dimensions of the board, to be _n x n_ where n = board_size. Defaults to the standard Gomoku board size of 19x19, but also accepts 15 as an alternative.
+    The dimensions of the board, to be n x n where n = board_size. Defaults to the standard Gomoku board size of 19x19, but also accepts 15 as an alternative.
 }
 }
 \details{
@@ -30,8 +30,7 @@ Create a new gomoku_board
 %% ~put references to the literature/web site here ~
 }
 \author{
-J Steven Raquel
-Pin-Chun Chen
+J Steven Raquel, Pin-Chun Chen
 }
 \note{
 %%  ~~further notes~~
