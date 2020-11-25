@@ -1,5 +1,6 @@
 gomoku_victory <- function(matrix) {
-  require(purrr)
+  require(purrr) # for map() function
+
   # Pull out a column or a row from the matrix as a vector
   winner <- NA
 
