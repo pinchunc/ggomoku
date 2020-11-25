@@ -16,9 +16,6 @@ gomoku_victory <- function(matrix) {
       winner <- NA
     }
   }
-  else {
-    return(winner)
-    }
 
   # checking for winner on columns
   if (is.na(winner)) {
@@ -32,10 +29,7 @@ gomoku_victory <- function(matrix) {
       winner <- NA
     }
   }
-  else {
-    return(winner)
-  }
-
+  
   # checking for winner on diagonals
   # split the matrix to get diagonals
   if (is.na(winner)) {
@@ -49,9 +43,6 @@ gomoku_victory <- function(matrix) {
     else {
       winner <- NA
     }
-  }
-  else {
-    return(winner)
   }
 
   # split the matrix to get reverse diagonals
@@ -67,7 +58,5 @@ gomoku_victory <- function(matrix) {
       winner <- NA
     }
   }
-  else {
-    return(winner)
-  }
+  return(winner)
 }
