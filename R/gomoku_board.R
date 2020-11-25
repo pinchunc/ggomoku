@@ -1,12 +1,12 @@
 # Function that creates a new game of Gomoku
 #' Title
 #'
-#' @param board_size 
+#' @param board_size a numeric variable indicating whether to draw a 19x19 (default) or 15x15 board for playing the board game
 #'
-#' @return
+#' @return a data frame of the ggplot gomoku board
 #' @export
 #'
-#' @examples
+#' @examples gomoku_board(15)
 gomoku_board <- function(board_size = 19) {
   require(ggplot2)
   require(grid)
