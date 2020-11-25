@@ -1,11 +1,11 @@
 #' Title
 #'
-#' @param board_size 
+#' @param board_size a numeric variable indicating whether to restrict X and Y coordinates inputs for a 19x19 (default) or 15x15 board for playing the board game
 #'
-#' @return
+#' @return a vector of two integers indicating the location of the tile to be placed
 #' @export
 #'
-#' @examples
+#' @examples gomoku_input(19)
 gomoku_input <- function(board_size) {
 
 
