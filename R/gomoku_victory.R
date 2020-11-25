@@ -1,13 +1,12 @@
-#' Title
+#' Checking for a winner of Gomoku across rows, columns and diagonals
 #'
-#' @param matrix 
+#' @param matrix
 #'
 #' @return
 #' @export
-#'
-#' @examples
+#' @importFrom purrr map
+#' @examples gomoku_victory(matrix)
 gomoku_victory <- function(matrix) {
-  require(purrr) # for map() function
 
   # Pull out a column or a row from the matrix as a vector
   winner <- NA
@@ -16,7 +15,7 @@ gomoku_victory <- function(matrix) {
   if (is.na(winner)) {
     rows_num <- split(matrix, row(matrix))
     rows_rle <- lapply(rows_num, FUN = rle)
-    winner_list <- map(rows_rle, gomoku_winner)
+    winner_list <- purrr::map(rows_rle, gomoku_winner)
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
     }
@@ -26,19 +25,19 @@ gomoku_victory <- function(matrix) {
   if (is.na(winner)) {
     cols_num <- split(matrix, col(matrix))
     cols_rle <- lapply(cols_num, FUN = rle)
-    winner_list <- map(cols_rle, gomoku_winner)
+    winner_list <- purrr::map(cols_rle, gomoku_winner)
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
     }
   }
-  
+
   # checking for winner on diagonals
   # split the matrix to get diagonals
   if (is.na(winner)) {
     d <- row(matrix) - col(matrix)
     diags_num <- split(matrix, d)
     diags_rle <- lapply(diags_num, FUN = rle)
-    winner_list <- map(diags_rle, gomoku_winner)
+    winner_list <- purrr::map(diags_rle, gomoku_winner)
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
     }
@@ -49,7 +48,7 @@ gomoku_victory <- function(matrix) {
     r <- row(matrix) + col(matrix)
     rev_diags_num <- split(matrix, r)
     rev_diags_rle <- lapply(rev_diags_num, FUN = rle)
-    winner_list <- map(rev_diags_rle, gomoku_winner)
+    winner_list <- purrr::map(rev_diags_rle, gomoku_winner)
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
     }
