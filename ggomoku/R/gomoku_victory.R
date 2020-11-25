@@ -9,11 +9,8 @@ gomoku_victory <- function(matrix) {
     rows_num <- split(matrix, row(matrix))
     rows_rle <- lapply(rows_num, FUN = rle)
     winner_list <- map(rows_rle, gomoku_winner)
-    if ('white' %in% winner_list) {
-      winner <- "white"
-    }
-    else if ('black' %in% winner_list) {
-      winner <- "black"
+    if (any(!is.na(winner_list))) {
+      winner <- winner_list[!is.na(winner_list)]
     }
     else {
       winner <- NA
@@ -28,11 +25,8 @@ gomoku_victory <- function(matrix) {
     cols_num <- split(matrix, col(matrix))
     cols_rle <- lapply(cols_num, FUN = rle)
     winner_list <- map(cols_rle, gomoku_winner)
-    if ('white' %in% winner_list) {
-      winner <- "white"
-    }
-    else if ('black' %in% winner_list) {
-      winner <- "black"
+    if (any(!is.na(winner_list))) {
+      winner <- winner_list[!is.na(winner_list)]
     }
     else {
       winner <- NA
@@ -49,11 +43,8 @@ gomoku_victory <- function(matrix) {
     diags_num <- split(matrix, d)
     diags_rle <- lapply(diags_num, FUN = rle)
     winner_list <- map(diags_rle, gomoku_winner)
-    if ('white' %in% winner_list){
-      winner <- "white"
-    }
-    else if ('black' %in% winner_list){
-      winner <- "black"
+    if (any(!is.na(winner_list))) {
+      winner <- winner_list[!is.na(winner_list)]
     }
     else {
       winner <- NA
@@ -69,11 +60,8 @@ gomoku_victory <- function(matrix) {
     rev_diags_num <- split(matrix, r)
     rev_diags_rle <- lapply(rev_diags_num, FUN = rle)
     winner_list <- map(rev_diags_rle, gomoku_winner)
-    if ('white' %in% winner_list){
-      winner <- "white"
-    }
-    else if ('black' %in% winner_list){
-      winner <- "black"
+    if (any(!is.na(winner_list))) {
+      winner <- winner_list[!is.na(winner_list)]
     }
     else {
       winner <- NA
