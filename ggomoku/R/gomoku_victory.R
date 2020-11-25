@@ -12,9 +12,6 @@ gomoku_victory <- function(matrix) {
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
     }
-    else {
-      winner <- NA
-    }
   }
 
   # checking for winner on columns
@@ -24,9 +21,6 @@ gomoku_victory <- function(matrix) {
     winner_list <- map(cols_rle, gomoku_winner)
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
-    }
-    else {
-      winner <- NA
     }
   }
   
@@ -40,9 +34,6 @@ gomoku_victory <- function(matrix) {
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
     }
-    else {
-      winner <- NA
-    }
   }
 
   # split the matrix to get reverse diagonals
@@ -53,9 +44,6 @@ gomoku_victory <- function(matrix) {
     winner_list <- map(rev_diags_rle, gomoku_winner)
     if (any(!is.na(winner_list))) {
       winner <- winner_list[!is.na(winner_list)]
-    }
-    else {
-      winner <- NA
     }
   }
   return(winner)
