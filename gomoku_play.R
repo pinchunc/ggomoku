@@ -7,6 +7,7 @@
 gomoku_play <- function(board, show_moves = FALSE) {
   require(ggplot2)
   require(beepr) # for the beep() function
+  require(R.utils) # for capitalize() function
 
   # Initializing matrix for checking victory
   board_size <- nrow(board$data)
@@ -33,11 +34,12 @@ gomoku_play <- function(board, show_moves = FALSE) {
 
     # Prompting user for coordinates to plot on the graph and also to add to the matrix
     # They should only enter whole numbers between 1 and the maximum board size
+    message("Enter x coordinate, followed by the y coordinate.")
     tile_x <- gomoku_input(board_size)
     tile_y <- gomoku_input(board_size)
 
     # Then that the move has not already taken place on the board
-    if (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
+    while (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
       message("There is already a piece on this tile. Please select different coordinates.")
       tile_x <- gomoku_input(board_size)
       tile_y <- gomoku_input(board_size)
@@ -80,7 +82,9 @@ gomoku_play <- function(board, show_moves = FALSE) {
       break
     }
 
-    # Returns message stating whose turn it is to move (assuming there is no winner)
+    # Incrementing the while loop
+    i <- i + 1
+
     if (color == "black") {
       color <- "white"
       board <- board + ggtitle("White's Move",
@@ -92,21 +96,16 @@ gomoku_play <- function(board, show_moves = FALSE) {
                               subtitle = paste0("Move ", (i + 1) /2, "/60"))
     }
 
-    # Adding title to indicate whose move it is:
-
-
     # plot the new board
     print(board)
 
-    # Incrementing the while loop
-    i <- i + 1
-  }
+    # When players run out of moves
+    if (i == 120) {
+      message("Both players are out of moves.")
+      break
+    }
 
-  # When players run out of moves
-  if (i == 120) {
-    message("Both players are out of moves.")
   }
-
 }
 
 ### Need to add a key to stop the game by the users
