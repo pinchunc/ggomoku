@@ -2,7 +2,7 @@
 \alias{gomoku_input}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Checking valid user input for gomoku_play()
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
@@ -47,7 +47,7 @@ gomoku_input(x)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (x) 
+function (x)
 {
   }
 }
