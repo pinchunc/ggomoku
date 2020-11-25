@@ -6,13 +6,13 @@
 
 #' Title
 #'
-#' @param board 
-#' @param show_moves 
+#' @param board the output of the function "gomoku_board", which is a data frame of the ggplot gomoku board
+#' @param show_moves a logical variable indicating whether to show the current number of moves on the tiles
 #'
-#' @return
+#' @return nothing but iterate the game until the 120th move
 #' @export
 #'
-#' @examples
+#' @examples gomoku_play(board, show_moves = TRUE)
 gomoku_play <- function(board, show_moves = FALSE) {
   require(ggplot2)
   require(beepr) # for the beep() function
