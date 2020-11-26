@@ -3,7 +3,7 @@
 #'
 #' @param rle_output
 #'
-#' @return
+#' @return a list that indicate whether black or white is the winner based on the output of the rle function
 #' @export
 #'
 #' @examples gomoku_winner(rle_output)
