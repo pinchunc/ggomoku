@@ -30,22 +30,12 @@ gomoku_play <- function(board, show_moves = FALSE) {
   # The turns will alternate between each player so they each have 60 moves
   while (i <= 120) {
 
-    # Message to print the move number for diagnostics
-    message("This is move number ", i, "/120 on the board.")
-
-    if (color == "black") {
-      message("It is black's move number ", (i + 1) / 2, "/60.")
-    }
-    else if (color == "white") {
-      message("It is white's move number ", i / 2, "/60.")
-    }
-
     # Prompting user for coordinates to plot on the graph and also to add to the matrix
     # They should only enter whole numbers between 1 and the maximum board size
     message("Enter x coordinate, followed by the y coordinate.")
-    
+
     tile_x <- gomoku_input(board_size)
-    
+
     if (is.na(tile_x)) {
       message("Please enter x coordinate again, followed by the y coordinate.")
       tile_x <- gomoku_input(board_size)
@@ -55,9 +45,9 @@ gomoku_play <- function(board, show_moves = FALSE) {
         break
       }
     }
-    
+
     tile_y <- gomoku_input(board_size)
-    
+
     if  (is.na(tile_y)) {
       message("Please enter y coordinate again.")
       tile_y <- gomoku_input(board_size)
@@ -66,7 +56,7 @@ gomoku_play <- function(board, show_moves = FALSE) {
         break
       }
     }
-    
+
     # Then that the move has not already taken place on the board
     while (!is.na(matrix[(board_size + 1) - tile_y, tile_x])) {
       message("There is already a piece on this tile. Please select different coordinates.")
