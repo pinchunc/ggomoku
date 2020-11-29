@@ -29,6 +29,12 @@ gomoku_play <- function(board, show_moves = FALSE) {
 
   # The turns will alternate between each player so they each have 60 moves
   while (i <= 120) {
+    if (color == "black") {
+      message("It is black's move number ", (i + 1) / 2, "/60.")
+    }
+    else if (color == "white") {
+      message("It is white's move number ", i / 2, "/60.")
+    }
 
     # Prompting user for coordinates to plot on the graph and also to add to the matrix
     # They should only enter whole numbers between 1 and the maximum board size
@@ -127,7 +133,3 @@ gomoku_play <- function(board, show_moves = FALSE) {
     }
   }
 }
-
-### Need to add a key to stop the game by the users
-### Need to resolve the situation when X or Y inputs are missing
-### Need to resolve the situation when X or Y inputs are out of the required range
