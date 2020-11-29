@@ -1,7 +1,7 @@
 # ggomoku
 
 # Overview
-The `ggomoku` package allows you to play the board game Gomoku within R. It does so by plotting the board using the `ggplot2` package upon which it depends.
+The `ggomoku` package allows you to play the board game Gomoku within R. It does so by plotting the board using the `ggplot2` package upon which it depends. To play the game, run `gomoku_play(gomoku_board())`.
 
 # Background
 _Gomoku_ (also known as _Five in a Row_) is a 2-player game where one player uses white tiles and the other uses black tiles. The game is played on a 15x15 or 19x19 squared board, similar to Go. 
