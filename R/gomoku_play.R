@@ -11,10 +11,10 @@
 #' @importFrom R.utils capitalize
 #' @examples
 #' # Starts a game of Gomoku that does not show move numbers on tiles
-#' gomoku_play(board)
+#' gomoku_play(gomoku_board())
 #'
 #' # Starts a game of Gomoku that does show move numbers on tiles
-#' gomoku_play(board, show_moves = TRUE)
+#' gomoku_play(gomoku_board(), show_moves = TRUE)
 gomoku_play <- function(board, show_moves = FALSE) {
 
   # Initializing matrix for checking victory
