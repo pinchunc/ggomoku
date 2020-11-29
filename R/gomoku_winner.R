@@ -6,11 +6,12 @@
 #' @export
 #' @return a list that indicate whether black or white is the winner based on the output of the rle function
 #' @author Pin-Chun Chen and J Steven Raquel
- gomoku_winner <- function(rle_output) {
- if (5 %in% rle_output$lengths) {
-     winner_list <- rle_output$values[which(rle_output$lengths == 5)]}
- else {winner_list <- NA}
- return(winner_list)
- }
-
-
+gomoku_winner <- function(rle_output) {
+  if (5 %in% rle_output$lengths) {
+    winner_list <- rle_output$values[which(rle_output$lengths == 5)]
+  }
+  else {
+    winner_list <- NA
+  }
+  return(winner_list)
+}

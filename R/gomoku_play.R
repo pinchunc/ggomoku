@@ -48,7 +48,7 @@ gomoku_play <- function(board, show_moves = FALSE) {
 
     tile_y <- gomoku_input(board_size)
 
-    if  (is.na(tile_y)) {
+    if (is.na(tile_y)) {
       message("Please enter y coordinate again.")
       tile_y <- gomoku_input(board_size)
       if (is.na(tile_y)) {
@@ -107,12 +107,14 @@ gomoku_play <- function(board, show_moves = FALSE) {
     if (color == "black") {
       color <- "white"
       board <- board + ggtitle("White's Move",
-                               subtitle = paste0("Move ", i / 2, "/60"))
+        subtitle = paste0("Move ", i / 2, "/60")
+      )
     }
     else {
       color <- "black"
       board <- board + ggtitle("Black's Move",
-                              subtitle = paste0("Move ", (i + 1) /2, "/60"))
+        subtitle = paste0("Move ", (i + 1) / 2, "/60")
+      )
     }
 
     # plot the new board
@@ -123,7 +125,6 @@ gomoku_play <- function(board, show_moves = FALSE) {
       message("Both players are out of moves.")
       break
     }
-
   }
 }
 
