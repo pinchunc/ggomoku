@@ -22,5 +22,5 @@ gomoku_play(board)
 gomoku_play(board, show_moves = TRUE)
 }
 \author{
-Pin-Chun Chen & J Steven Raquel
+Pin-Chun Chen and J Steven Raquel
 }
