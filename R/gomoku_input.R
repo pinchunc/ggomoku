@@ -5,7 +5,7 @@
 #' @return a vector of two integers indicating the location of the tile to be placed
 #' @export
 #'
-#' @examples gomoku_input(19)
+#' @examples gomoku_input(board_size = 19), gomoku_input(board_size = 15)
 gomoku_input <- function(board_size) {
 
 
@@ -22,6 +22,10 @@ gomoku_input <- function(board_size) {
         return(gomoku_input(board_size))
     }
 
-    return(as.integer(input))
+    else {
+        return(input)
+    }
+
+
 
 }
