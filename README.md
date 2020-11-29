@@ -20,6 +20,8 @@ Within `gomoku_play()` there is a nested function `gomoku_victory()` which takes
 * Black goes first.
 * A tile of the same color cannot be added twice in a row.
 * A tile cannot replace an existing tile on the board. 
+* A tile must be placed withing the range of the board (a whole number within 15 or 19).
+* The game breaks when consecutive two invalid inputs occur (i.e. NAs, decimals, or numbers greater than the board size).
 * In keeping with "standard" Gomoku, one must have _exactly_ 5 tiles in a row to win, greater than 5 does not count. 
 
 # Optional ("house") Rules
