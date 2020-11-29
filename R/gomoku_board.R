@@ -34,7 +34,7 @@ gomoku_board <- function(board_size = 19) {
   board <- suppressMessages(
     print(
       ggplot(df) +
-    geom_point(aes(x, y), size = 5, alpha = 0) +
+    geom_point(aes(.data$x, .data$y), size = 5, alpha = 0) +
     theme(
       aspect.ratio = 1,
       axis.ticks = element_line(colour = "black", size = 1),
