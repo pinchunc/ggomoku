@@ -5,15 +5,15 @@
 Checking for a winner of the Gomoku game
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This function is designed not to be called directly but to be used within the gomoku_play() function where it maps the nested function gomoku_winner() to all rows, columns and diagonals of the game board in order to detect a winner.
 }
 \usage{
-gomoku_victory(x)
+gomoku_victory(matrix)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{matrix}{
-
+This input matrix is the matrix completed by the user input given by gomoku_input(), which is itself called by gomoku_play(). It mirrors exactly the board drawn by ggplot2.
 }
 }
 \details{
@@ -30,7 +30,7 @@ gomoku_victory(x)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Pin-Chun Chen & J Steven Raquel
 }
 \note{
 %%  ~~further notes~~
