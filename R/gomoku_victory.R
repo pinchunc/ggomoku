@@ -1,11 +1,12 @@
-#' Checking for a winner of Gomoku across rows, columns and diagonals
-#'
-#' @param matrix
-#'
-#' @return
+#' @name gomoku_victory
+#' @title Checking for a winner of the Gomoku game
+#' @description This function is designed not to be called directly but to be used within the gomoku_play() function where it maps the nested function gomoku_winner() to all rows, columns and diagonals of the game board in order to detect a winner.
+#' @param matrix This input matrix is the matrix completed by the user input given by gomoku_input(), which is itself called by gomoku_play(). It mirrors exactly the board drawn by ggplot2.
+#' @usage gomoku_victory(matrix)
+#' @return A string containing either "black" or "white", depending on who won, once a winner is found.
+#' @author Pin-Chun Chen and J Steven Raquel
 #' @export
 #' @importFrom purrr map
-#' @examples gomoku_victory(matrix)
 gomoku_victory <- function(matrix) {
 
   # Pull out a column or a row from the matrix as a vector

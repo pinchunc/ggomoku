@@ -1,11 +1,16 @@
-#' Checking valid user input for gomoku_play
-#'
+#' @name gomoku_input
+#' @title Checking valid user input for gomoku_play
+#' @description This function is designed not to be called directly but to be used within the gomoku_play() function in which it prompts the user for a valid input.
+#' @usage gomoku_input(board_size)
 #' @param board_size a numeric variable of either 19 (default) or 15, indicating whether to restrict X and Y coordinates inputs for a 19x19 (default) or 15x15 board for playing the board game
-#'
-#' @return a vector of two integers indicating the location of the tile to be placed
+#' @author Pin-Chun Chen and J Steven Raquel
 #' @export
-#'
-#' @examples gomoku_input(board_size = 19), gomoku_input(board_size = 15)
+#' @return One of the integer coordinates between 1 and board_size to be used as either an x or y coordinate on the gomoku board.
+#' @examples
+#' # When called during a game that used gomoku_board() or gomoku_board(19)
+#' gomoku_input(board_size = 19)
+#' # When called during agame that used gomoku_board(15)
+#' gomoku_input(board_size = 15)
 gomoku_input <- function(board_size) {
 
 
@@ -25,7 +30,5 @@ gomoku_input <- function(board_size) {
     else {
         return(input)
     }
-
-
 
 }
