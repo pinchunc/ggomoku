@@ -102,8 +102,9 @@ gomoku_play <- function(board, show_moves = FALSE) {
     if (!is.na(winner)) {
       # Sound effect for winner
       beepr::beep(sound = 3, expr = NULL)
-      message("The winner is ", winner, "!")
+      message(capitalize(winner), " is the winner!")
       board <- board + ggtitle(paste0("Winner: ", capitalize(winner)))
+      print(board)
       break
     }
 
