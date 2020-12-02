@@ -27,6 +27,6 @@ Within `gomoku_play()` there is a nested function `gomoku_victory()` which takes
 # Optional ("house") Rules
 Players can opt to follow the following rules to make the game more fair, as Black has a significant advantage by virtue of being able to move first.
 
-* The rule of **three and three* bans a move that simultaneously forms two open rows of three tiles i.e. two rows that are not blocked at either end.
+* The rule of **three and three** bans a move that simultaneously forms two open rows of three tiles i.e. two rows that are not blocked at either end.
 * The rule of **four and four** bans a move that simultaneously forms two rows of four open tiles (open or otherwise).
 
